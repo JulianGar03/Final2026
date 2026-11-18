@@ -28,9 +28,20 @@ Research Question: - Is dying independent of sex?
 
 # Introduction
 
+The purpose of this study is to determine whether a patient's sex is related to their likelihood of dying from COVID-19. We will be using data collected from COVID-19 patients in South Korea between January 1 and May 1, 2020. The two variables we are looking at are sex (male or female) and patient result (alive or died). By comparing these two variables, we want to see whether there is a significant relationship between sex and the recorded outcome.
+
+**Null Hypothesis (H₀):** Sex and COVID-19 death outcomes are independent. This means that the proportion of patients who died is the same for males and females.
+
+**Alternative Hypothesis (Hₐ):** Sex and COVID-19 death outcomes are not independent. This means that the proportion of patients who died is different between males and females.
+
+We will use a significance level of 0.05 to determine whether there is enough statistical evidence to reject the null hypothesis.
 
 
 # Data Results
+```{r}
+table(kRdata$sex, kRdata$result)
+```
+Looking at the table, we can see that there were 3,311 patients in the dataset. Of these patients, 1,856 were female and 1,455 were male. There were 25 deaths among female patients compared to 44 deaths among male patients. Even though there were more females in the dataset, males had more recorded deaths. This suggests that sex might be related to COVID-19 death outcomes, but we still need to perform a statistical test to determine whether the difference is significant.
 
 ## Graphical results    
 
