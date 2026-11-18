@@ -45,9 +45,38 @@ Looking at the table, we can see that there were 3,311 patients in the dataset. 
 
 ## Graphical results    
 
+```{r}
+ggplot(kRdata, aes(x = sex, fill = result)) +
+  geom_bar(position = "fill") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "COVID-19 Outcomes by Sex",
+    x = "Sex",
+    y = "Percentage of Patients",
+    fill = "Outcome"
+  )
+```
+Looking at the bar graph, we can see that the majority of both male and female patients were recorded as alive. However, males had a slightly higher percentage of deaths compared to females. About 3.02% of male patients died, while only 1.35% of female patients died. Although the difference looks small on the graph, males had more than twice the recorded death percentage of females. This suggests that there might be a relationship between sex and COVID-19 death outcomes, but we still need to perform a statistical test to see if the difference is significant.
+
+
 ## Numerical results
+
+
+```{r}
+prop.table(table(kRdata$sex, kRdata$result), margin = 1)
+```
+Looking at the numerical results, we can see that about 98.7% of female patients were alive compared to 97.0% of male patients. For deaths, about 1.3% of females died compared to 3.0% of males. This shows that male patients had a higher proportion of deaths, even though there were fewer males in the dataset. The difference in death percentages suggests that sex might have a relationship with COVID-19 outcomes. However, we still need to test whether this difference is statistically significant.
 
 ## Inferential results 
 
+
+```{r}
+chisq.test(table(kRdata$sex, kRdata$result))
+```
+The chi-square test was used to determine whether sex and COVID-19 outcomes are independent. The results showed a chi-square value of 10 with 1 degree of freedom and a p-value of 0.001. Since the p-value is less than our significance level of 0.05, we reject the null hypothesis. This means there is a statistically significant relationship between sex and COVID-19 outcomes. Based on our data, males had a higher percentage of deaths (3.0%) compared to females (1.3%).
+
+
+
 # Conclusions
 
+The research question for this study was: Is dying from COVID-19 independent of sex? Based on the data collected from South Korea, we found that males had a higher percentage of deaths (3.0%) compared to females (1.3%). The chi-square test gave us a p-value of 0.001, which is less than our significance level of 0.05. Therefore, we reject the null hypothesis. This means that dying from COVID-19 is not independent of sex in this dataset. Overall, the results suggest that males had a higher death rate than females among the patients studied. However, other factors could have influenced these results.
