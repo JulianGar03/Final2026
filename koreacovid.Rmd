@@ -28,6 +28,8 @@ Research Question: - Is dying independent of sex?
 
 # Introduction
 
+
+
 # Data Results
 
 ## Graphical results    
